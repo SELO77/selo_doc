@@ -35,5 +35,5 @@ class Command(BaseCommand):
 
 ```bash
 $ python manage.py django_custom_command
-> run django_custom_command
+run django_custom_command
 ```

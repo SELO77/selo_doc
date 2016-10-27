@@ -2,21 +2,21 @@
 
 
 ```javascript
-var d = new Date().toISOString().slice(0, 19).replace(/[A-Z]/gi, " ");
+var d = new Date().toISOString().slice(0, 19).replace(/[A-Z]/, " ");
 console.log(d); //"2016-10-24 11:03:32"
 ```
 
-
-/패턴/정규식옵션
+## /패턴/정규식옵션
  
 패턴 : 대체할 문자를 입력
+
 정규식옵션 : g, i, m 중에 필요한 것 입력
  
 g (global) : 첫번째 문자만이 아닌 패턴에 해당하는 모든 문자들을 검색하여 대체한다.
+
 i (ignoreCase) : 대소문자 구분하지 않음.
+
 m (multillineM) : 여러 줄 검색
-
-
 
 ## Bonus
 

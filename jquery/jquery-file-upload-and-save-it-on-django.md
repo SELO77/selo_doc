@@ -17,6 +17,12 @@ $.ajax({
 })
 ```
 
+**processData / boolean** <br/>
+data 지정한 개체를 쿼리 문자열로 변환할지 여부를 설정합니다. 기본값은 true로, 자동으로 "application / x - www - form - urlencoded"형식으로 변환합니다. DOMDocument 자체 등의 다른 형식으로 데이터를 보내기 위하여 자동 변환하고 싶지 않은 경우는 false를 지정합니다.
+
+**contentType / string** <br/>
+서버에 데이터를 보낼 때 사용 content - type 헤더의 값입니다. 기본값은 "application / x - www - form - urlencoded"대부분의 경우이 설정으로 문제 없을 것입니다.
+
 ### Back with django rest framework
 ```python
 class FileUploadView(APIView):

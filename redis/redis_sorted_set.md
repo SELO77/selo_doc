@@ -250,4 +250,7 @@ PS. 해당 구현은 Best Practice 가 아니며, 이해를 위한 예시입니�
 * [Tutorials Point: Redis Sotred Sets](https://www.tutorialspoint.com/redis/redis_sorted_sets.htm)
 
 
+**잘못된 부분은 언제든지 댓글로 혼내주세요!!**
+
+
 

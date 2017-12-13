@@ -1,3 +1,6 @@
+Tags: Django
+
+
 # django-rest-framework token 발행
 
 ### 배경지식

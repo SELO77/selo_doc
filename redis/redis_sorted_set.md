@@ -1,4 +1,7 @@
-# Implement Ranking System using by redis
+Date: 07/12/2017
+Tags: Redis, NoSQL
+
+# [Redis] Implement Ranking System using by redis
 
 
 ## Introduction

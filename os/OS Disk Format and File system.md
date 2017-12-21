@@ -1,4 +1,7 @@
-# Mac OS Disk Format and File system
+Tags: OS, file system
+
+
+# OS Disk Format and File system
 
 2018년 새해 맞이 준비를 위해 개인 맥 포맷을 진행했고, MAC 파일시스템에 대한 이해를 위해 정리를 해보려 한다.
 

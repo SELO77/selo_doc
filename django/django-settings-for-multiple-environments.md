@@ -144,25 +144,36 @@ except KeyError:
     print "SELO_ENV must be set to OS Variable."
     exit(1)
     
+    
+def import_module_asterisk(module_name):
+    module = __import__(module_name, globals=globals(), fromlist=['*'])
+    for v in dir(module):
+        if v in {'__name__', '__builtins__', '__doc__', '__file__', '__package__'}:
+            continue
+        globals()[v] = getattr(module, v)
+
+
 try:
-    __import__(SELO_ENV)
+    import_module_asterisk(SELO_ENV)
 except ImportError:
     print "Given Value is %s. It's invalid environment name." % SELO_ENV
     exit(1)
 else:
     print("Successfully Loaded %s settings." % SELO_ENV)
-  
 ```
 
-위 코드를 간단히 설명하겠다. `__import__` 는 빌트인 함수이며, 동적으로 모듈을 임포트할 수 있게해준다. 절대경로와 상대경로 임포트 모두 제공한다. 코드로 풀어서 설명하자면, `__import__('development')`는 `from development import *`와 동등한 기능을 수행한다. 결론적으로 `development.py` 모듈의 모든 컨텍스트가 참조된다. 설명은 파이썬2 기준이며, 파이썬3에서는 사용해보지 않았다.
+위 코드를 간단히 설명하겠다. `__import__` 는 빌트인 함수이며, 동적으로 모듈을 임포트할 수 있게해준다. 즉, 오직 실행환경에서만 임포트 대상을 알 수 있는 경우 사용한다. 코드로 풀어서 설명하자면, `__import__('development', fromlist=['*'])`는 `from development import *`와 동등한 기능을 수행한다. 결론적으로 `development.py` 모듈의 네임스페이스를 통째로 임포트한다. 설명은 파이썬2 기준이며, 파이썬3에서는 사용해보지 않았다.
 
 
 ## 정리
-필자가 참여한 장고 프로젝트에는 신규 프로젝트도 있었고, 몇 년동안 개발 운영 되고 있는 서비스도 있었다. 프로젝트에서 이러한 환경에 따른 설정은 매우 치명적인 부분임에도 불구하고, 무분별하게 관리되는 경우가 있었다. 문제가 안발생하면 다행이지만... 코드를 공유하는 개발자들 사이에서 설정을 변경 후 푸쉬하는 경우로 문제가 발생했던 적이 몇 번 있었다. 특히, 디비커넥션 정보, 디버거 임포트 등과 같이 개발중인 기능에 의존적인 설정들이 예가 될 것이다. 위 방식과 구조를 취한다면 이러한 문제들을 해결할 수 있을 것이다.
+필자가 참여한 장고 프로젝트에는 신규 프로젝트도 있었고, 몇 년동안 개발 운영 되고 있는 서비스도 있었다. 프로젝트에서 이러한 환경에 따른 설정은 매우 치명적인 부분임에도 불구하고 기능개발에 집중하다보면 간과되는 경우가 많다. 문제가 발생하지 않으면 다행이지만... 최근에 오픈한 모바일게임 듀랑고 클라이언트에서 서버 로그가 출력되는 안타까운 문제가 발생했고, 논란의 중심에 있다. 듀랑고 사태의 정확한 맥락은 알수 없지만 기본을 간과하는 순간 문제가 발생하게 되는것 같다.
+
+같은 맥락으로 이어서 말하자면 코드를 공유하는 개발자들 사이에서 설정을 변경 후 푸쉬하는 경우로 문제가 발생했던 적이 몇 번 있었다. 특히, 디비커넥션 정보, 디버거 임포트 등과 같이 개발중인 기능에 의존적인 설정들이 예가 될 것이다. 위 방식과 구조를 취한다면 이러한 문제들을 해결할 수 있을 것이다. 
 
 PS. 언젠가 정리해야지 막연히 생각하던걸 새로운 회사에서 또 한번(ㅠ?) 장고프로젝트를 진행하게 됬고, 이 참에 정리했다... 개운하구만!! 그럼 이만 뿅!!
 
 오타나 잘못된 부분에 대한 언급은 언제나 감사드립니다.
 
 
-
+## Reference
+* [Python reference: __import__](http://python-reference.readthedocs.io/en/latest/docs/functions/__import__.html)

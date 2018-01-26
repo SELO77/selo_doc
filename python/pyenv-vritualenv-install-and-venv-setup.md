@@ -1,3 +1,8 @@
+Date: January 15th, 2018
+Tags: python, pyenv, virtualenv
+Permalink: pyenv-virtualenv-install-and-venv-setup
+
+
 # pyenv-vritualenv install and venv setup
 
 ##### clone pyenv-virtualenv
@@ -9,7 +14,7 @@ git clone https://github.com/pyenv/pyenv-virtualenv
 $ brew install pyenv-virtualenv
 ```
 
-##### add following script to your profile
+##### add following script to your shell profile
 ```
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
